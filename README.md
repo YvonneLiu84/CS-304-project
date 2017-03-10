@@ -17,7 +17,7 @@ http://www.ugrad.cs.ubc.ca/~cs304/2014S1/tutorials/SQLPlus/SQLPlus.html
 
 <h2> Setup PHP </h2> 
 Follow the steps in "Setting up PHP" in this link: 
-http://www.ugrad.cs.ubc.ca/~cs304/2014S1/php/index.html
+http://www.ugrad.cs.ubc.ca/~cs304/2014S1/php/index.htm
 
 Then follow the steps in "Getting PHP accessing Oracle" steps (Same link as before) 
 <b>Note, use test.php in the github repository, as the test.txt on the webpage does not work </b>
