@@ -186,13 +186,13 @@ insert into advisor_work
 insert into student_assign
 	values('0001', '1000');
 insert into student_assign
-	values('0002', '2000');
+	values('0002', '1000');
 insert into student_assign
-	values('0003', '3000');
+	values('0003', '1000');
 insert into student_assign
-	values('0004', '4000');
+	values('0004', '1000');
 insert into student_assign
-	values('0005', '5000');
+	values('0005', '1000');
 
 insert into industry_company
 	values('Hooli', '1234 West Mall', '123-786-4531', 'Alex');
