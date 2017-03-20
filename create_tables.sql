@@ -33,8 +33,13 @@ create table students
 		phone varchar(12) null,
 		university_name varchar(40) null,
 		primary key (sid),
-		foreign key (university_name) references university);
+		foreign key (university_name) references university,
+		CONSTRAINT check_student_year
+		CHECK (year BETWEEN 1 and 4));
 grant select on students to public;
+
+ALTER TABLE students
+ENABLE CONSTRAINT check_student_year;
 
 
 create table advisor_work
