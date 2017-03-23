@@ -119,8 +119,12 @@ create table internship
 		foreign key(finance_team_name) references finance_team,
 		foreign key(admin_team_name) references admin_team,
 		foreign key(industry_name) references industry_company,
-		foreign key(sid) references students);
+		CONSTRAINT student_column 
+		foreign key(sid) references students
+		ON DELETE CASCADE);
 grant select on internship to public; 
+
+
 
 insert into address_postalcode
 	values('2329 West Mall', 'V6T1Z4');
