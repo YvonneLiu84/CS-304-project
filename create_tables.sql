@@ -57,9 +57,15 @@ create table student_assign
 	(sid char(4) not null,
 		aid char(4) not null,
 		primary key(sid,aid),
-		foreign key(sid) references students,
+		CONSTRAINT student_column_assign
+		foreign key(sid) references students
+		ON DELETE CASCADE,
 		foreign key(aid) references advisor_work);
 grant select on student_assign to public;
+
+ALTER TABLE student_assign
+ENABLE CONSTRAINT student_column_assign;
+
 
 create table industry_company
 	(name varchar(20) not null,
@@ -125,6 +131,8 @@ create table internship
 grant select on internship to public; 
 
 
+ALTER TABLE internship
+ENABLE CONSTRAINT student_column;
 
 insert into address_postalcode
 	values('2329 West Mall', 'V6T1Z4');
