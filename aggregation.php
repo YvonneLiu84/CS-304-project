@@ -71,7 +71,7 @@ if ($c=OCILogon("ora_j2z9a", "a39864146", $db)) {
 }
 ##$parameter = $_SERVER['QUERY_STRING'];
 echo "Return the average salary of all internships <br/>";
-$query= "select avg(salary) from industryjobsalary";
+$query= "select jobtitle, avg(salary) from industryjobsalary group by jobtitle";
 $stid = oci_parse($c,$query);
 $r = oci_execute($stid);
 print '<table border="1">';
@@ -85,7 +85,7 @@ while ($row = oci_fetch_array($stid, OCI_RETURN_NULLS+OCI_ASSOC)) {
 print '</table>';
 
 
-echo "Return the industry name, job title and salary with the ". $_POST["max/min"]." salary of all internships <br/>";
+echo "Return the industry name, job title and salary with the ". $_POST["max/min"]." salary of all the internships <br/>";
 if(empty($_POST["max/min"])) {
     echo "";
 }
