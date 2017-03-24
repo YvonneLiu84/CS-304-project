@@ -90,8 +90,9 @@ if(empty($_POST["max/min"])) {
     echo "";
 }
 elseif($_POST["max/min"]=="MAX") {
-    $querymax = "select * from industryjobsalary where industryjobsalary.salary >= all 
-             (select s2. salary from industryjobsalary s2)";
+    $querymax = "select max(x.avg)
+                 from (select avg(salary) as avg from industryjobsalary 
+                 group by jobtitle) x";
     $stidmax = oci_parse($c, $querymax);
     $rmax = oci_execute($stidmax);
     print '<table border="1">';
@@ -105,8 +106,9 @@ elseif($_POST["max/min"]=="MAX") {
     print '</table>';
 }
 elseif($_POST["max/min"]=="MIN")  {
-    $querymin="select * from industryjobsalary where industryjobsalary.salary <= all 
-             (select s2. salary from industryjobsalary s2)";
+    $querymin="select min(x.avg)
+               from (select avg(salary) as avg from industryjobsalary 
+               group by jobtitle) x";
     $stidmin = oci_parse($c,$querymin);
     $rmin = oci_execute($stidmin);
     print '<table border="1">';
