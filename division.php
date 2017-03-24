@@ -64,7 +64,7 @@
                 echo "Oracle Connect Error " . $err['message'];
             }
             ##$parameter = $_SERVER['QUERY_STRING'];
-            echo "Return the advisor name and id who is assigned to all students <br />";
+            echo "Return the advisor ID and name who is assigned to all students <br />";
             $divisionQuery = "select a. aid, a.name from advisor_work a
                   where not exists(
                   select * from students
