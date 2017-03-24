@@ -76,7 +76,7 @@ if(empty($_POST['year'])) {
     echo "";
 }
 elseif ($_POST['year']!=1 and $_POST['year']!=2 and $_POST['year']!=3 and $_POST['year']!=4){
-    echo " Please input a valid year standing from 1 to 4";
+    echo " Update failed. Please input a valid year standing from 1 to 4";
 }
 else {
     $updateQuery = "UPDATE STUDENTS SET YEAR= " . $_POST['year'] . " WHERE SID=" . $_POST['sid'];
