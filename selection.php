@@ -9,7 +9,7 @@
 
     <link rel="stylesheet" href="assets/demo.css">
     <link rel="stylesheet" href="assets/sidebar-collapse.css">
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
     <link href='http://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
 
@@ -90,7 +90,7 @@
                     $query= "SELECT * FROM STUDENTS WHERE YEAR =". $_POST["year"];
                     $stid = oci_parse($c,$query);
                     $r = oci_execute($stid);
-                    print '<table border="1">';
+                    print '<table class="table table-striped">';
                     while ($row = oci_fetch_array($stid, OCI_RETURN_NULLS+OCI_ASSOC)) {
                         print '<tr>';
                         foreach ($row as $item) {
