@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Admin Aggregation</title>
+    <title>Finance Update</title>
 
     <link rel="stylesheet" href="assets/demo.css">
     <link rel="stylesheet" href="assets/sidebar-collapse.css">
@@ -15,6 +15,7 @@
 
 
 </head>
+
 <body>
 <div>
 
@@ -25,7 +26,7 @@
 
         <div class="sidebar-links">
 
-            <div class="link-blue selected">
+            <div class="link-blue">
 
                 <a href="#">
                     <i class="fa fa-male"></i>Admin Team
@@ -43,7 +44,7 @@
 
             </div>
 
-            <div class="link-red">
+            <div class="link-red selected">
 
                 <a href="#">
                     <i class="fa fa-money"></i>Finance Team
@@ -71,90 +72,96 @@
             <div class="row">
                 <div class="col-lg-12">
                     <form action = "<?php $_PHP_SELF ?>" method = "POST">
-                        Max or Min or Average  ?: <input type = "text" name = "max/min/average" />
-                        Count : <input type = "text" name = "count" />
+                        Finance team name: <input type = "text" name = "name" />
+                        Finance team budget: <input type = "text" name = "budget" />
                         <input type = "submit" />
                     </form>
 
-                    <?php
-                    /**
-                     * Created by PhpStorm.
-                     * User: Estelle
-                     * Date: 2017-03-24
-                     * Time: 12:16 PM
-                     */
 
+                    <?php
                     $db = "(DESCRIPTION=(ADDRESS_LIST = (ADDRESS = (PROTOCOL = TCP)(HOST = dbhost.ugrad.cs.ubc.ca)(PORT = 1522)))(CONNECT_DATA=(SID=ug)))";
-                    if ($c=OCILogon("ora_s5p0b", "a34843145", $db)) {
+                    if ($c=OCILogon("ora_j2z9a", "a39864146", $db)) {
                         echo "Successfully connected to Oracle.\n <br/>";
                     } else {
                         $err = OCIError();
                         echo "Oracle Connect Error " . $err['message'];
                     }
-
-                    echo "Get the " . $_POST["max/min/average/"] . "salary among all the internships ". "or " . $_POST["count"] . " the number 
-of internships <br/>";
-
-                    if(empty($_POST["max/min/average"] OR $_POST["count"])) {
-                        echo "";
-                    } elseif ($_POST["max/min/average"]=="MAX"){
-                        $sql1 = "select max(salary) as maxSalary
-                 from industryjobsalary";
-                        $stid1 = oci_parse($c, $sql1);
+                    ##$parameter = $_SERVER['QUERY_STRING'];
+                    echo "Update the total budget of a finance team (team name " .$_POST['name'].") to ". $_POST['budget']. "<br />";
+                    if(empty($_POST['budget'])) {
+                        echo "Please input one of finance team names: teamFA, teamFB, teamFC, teamFD, teamFE";
+                    }
+                    elseif($_POST['name']=="teamFA") {
+                        $updateQuery = "UPDATE finance_team SET budget= " . $_POST['budget'] . " WHERE name='teamFA'";
+                        $stid = oci_parse($c, $updateQuery);
+                        $r = oci_execute($stid);
+                        print '<table border="1">';
+                        while ($row = oci_fetch_array($stid, OCI_RETURN_NULLS + OCI_ASSOC)) {
+                            print '<tr>';
+                            foreach ($row as $item) {
+                                print '<td>' . ($item !== null ? htmlentities($item, ENT_QUOTES) : '&nbsp') . '</td>';
+                            }
+                            print '</tr>';
+                        }
+                        echo "Updated successfully";
+                    }
+                    elseif($_POST['name']=="teamFB") {
+                        $updateQuery1 = "UPDATE finance_team SET budget= " . $_POST['budget'] . " WHERE name='teamFB'";
+                        $stid1 = oci_parse($c, $updateQuery1);
                         $r1 = oci_execute($stid1);
                         print '<table border="1">';
-                        while ($rowmax = oci_fetch_array($stid1, OCI_RETURN_NULLS + OCI_ASSOC)) {
+                        while ($row1 = oci_fetch_array($stid1, OCI_RETURN_NULLS + OCI_ASSOC)) {
                             print '<tr>';
-                            foreach ($rowmax as $itemmax) {
-                                print '<td>' . ($itemmax !== null ? htmlentities($itemmax, ENT_QUOTES) : '&nbsp') . '</td>';
+                            foreach ($row1 as $item1) {
+                                print '<td>' . ($item1 !== null ? htmlentities($item1, ENT_QUOTES) : '&nbsp') . '</td>';
                             }
                             print '</tr>';
                         }
-                        print '</table>';
-                    } elseif($_POST["max/min/average"]=="MIN") {
-                        $sql2 = "select min(salary) as minSalary
-                 from industryjobsalary";
-                        $stid2 = oci_parse($c, $sql2);
+                        echo "Updated successfully";
+                    }
+                    elseif($_POST['name']=="teamFC") {
+                        $updateQuery2 = "UPDATE finance_team SET budget= " . $_POST['budget'] . " WHERE name='teamFC'";
+                        $stid2 = oci_parse($c, $updateQuery2);
                         $r2 = oci_execute($stid2);
                         print '<table border="1">';
-                        while ($rowmin = oci_fetch_array($stid2, OCI_RETURN_NULLS + OCI_ASSOC)) {
+                        while ($row2 = oci_fetch_array($stid2, OCI_RETURN_NULLS + OCI_ASSOC)) {
                             print '<tr>';
-                            foreach ($rowmin as $itemmin) {
-                                print '<td>' . ($itemmin !== null ? htmlentities($itemmin, ENT_QUOTES) : '&nbsp') . '</td>';
+                            foreach ($row2 as $item2) {
+                                print '<td>' . ($item2 !== null ? htmlentities($item2, ENT_QUOTES) : '&nbsp') . '</td>';
                             }
                             print '</tr>';
                         }
-                        print '</table>';
-                    } elseif($_POST["max/min/average"]=="AVERAGE") {
-                        $sql3 = "select avg(salary) as avgSalary from industryjobsalary";
-                        $stid3 = oci_parse($c, $sql3);
+                        echo "Updated successfully";
+                    }
+                    elseif($_POST['name']=="teamFD") {
+                        $updateQuery3 = "UPDATE finance_team SET budget= " . $_POST['budget'] . " WHERE name='teamFD'";
+                        $stid3 = oci_parse($c, $updateQuery3);
                         $r3 = oci_execute($stid3);
                         print '<table border="1">';
-                        while ($rowav = oci_fetch_array($stid3, OCI_RETURN_NULLS + OCI_ASSOC)) {
+                        while ($row3 = oci_fetch_array($stid3, OCI_RETURN_NULLS + OCI_ASSOC)) {
                             print '<tr>';
-                            foreach ($rowav as $itemav) {
-                                print '<td>' . ($itemav !== null ? htmlentities($itemav, ENT_QUOTES) : '&nbsp') . '</td>';
+                            foreach ($row3 as $item3) {
+                                print '<td>' . ($item3 !== null ? htmlentities($item3, ENT_QUOTES) : '&nbsp') . '</td>';
                             }
                             print '</tr>';
                         }
-                        print '</table>';
-                    } elseif (($_POST["count"])== "COUNT"){
-                        $sql4 = "SELECT COUNT(*) FROM internship";
-                        $stid4 = oci_parse($c, $sql4);
-                        $r4 = oci_execute($stid4);
-                        print '<table border="1">';
-                        while ($rowav = oci_fetch_array($stid4, OCI_RETURN_NULLS + OCI_ASSOC)) {
-                            print '<tr>';
-                            foreach ($rowav as $itemav) {
-                                print '<td>' . ($itemav !== null ? htmlentities($itemav, ENT_QUOTES) : '&nbsp') . '</td>';
-                            }
-                            print '</tr>';
-                        }
-                        print '</table>';
+                        echo "Updated successfully";
                     }
                     else {
-                        echo "Your input is invalid";
+                        $updateQuery4 = "UPDATE finance_team SET budget= " . $_POST['budget'] . " WHERE name='teamFE'";
+                        $stid4 = oci_parse($c, $updateQuery4);
+                        $r4 = oci_execute($stid4);
+                        print '<table border="1">';
+                        while ($row4 = oci_fetch_array($stid4, OCI_RETURN_NULLS + OCI_ASSOC)) {
+                            print '<tr>';
+                            foreach ($row4 as $item4) {
+                                print '<td>' . ($item4 !== null ? htmlentities($item4, ENT_QUOTES) : '&nbsp') . '</td>';
+                            }
+                            print '</tr>';
+                        }
+                        echo "Updated successfully";
                     }
+                    print '</table>';
                     OCILogoff($c);
                     ?>
                 </div>

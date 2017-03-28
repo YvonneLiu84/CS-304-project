@@ -1,11 +1,14 @@
+
 <html>
+
+
 <head>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Admin Selection</title>
+    <title>Internship Database</title>
 
     <link rel="stylesheet" href="assets/demo.css">
     <link rel="stylesheet" href="assets/sidebar-collapse.css">
@@ -15,6 +18,7 @@
 
 
 </head>
+
 <body>
 <div>
 
@@ -25,7 +29,7 @@
 
         <div class="sidebar-links">
 
-            <div class="link-blue selected">
+            <div class="link-blue">
 
                 <a href="#">
                     <i class="fa fa-male"></i>Admin Team
@@ -70,39 +74,10 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    <form action = "<?php $_PHP_SELF ?>" method = "POST">
-                        Year: <input type = "text" name = "year" />
-                        <input type = "submit" />
-                    </form>
-
-
-                    <?php
-                    $db = "(DESCRIPTION=(ADDRESS_LIST = (ADDRESS = (PROTOCOL = TCP)(HOST = dbhost.ugrad.cs.ubc.ca)(PORT = 1522)))(CONNECT_DATA=(SID=ug)))";
-                    if ($c=OCILogon("ora_j2z9a", "a39864146", $db)) {
-                        echo "Successfully connected to Oracle.\n";
-
-                    } else {
-                        $err = OCIError();
-                        echo "Oracle Connect Error " . $err['message'];
-                    }
-                    ##$parameter = $_SERVER['QUERY_STRING'];
-                    echo "Select all students with a year standing of " . $_POST["year"]. "<br />";
-                    $query= "SELECT * FROM STUDENTS WHERE YEAR =". $_POST["year"];
-                    $stid = oci_parse($c,$query);
-                    $r = oci_execute($stid);
-                    print '<table border="1">';
-                    while ($row = oci_fetch_array($stid, OCI_RETURN_NULLS+OCI_ASSOC)) {
-                        print '<tr>';
-                        foreach ($row as $item) {
-                            print '<td>'.($item !== null ? htmlentities($item, ENT_QUOTES) : '&nbsp').'</td>';
-                        }
-                        print '</tr>';
-                    }
-                    print '</table>';
-
-
-                    OCILogoff($c);
-                    ?>
+                    <h1>Introduction</h1>
+                    <p>This is team 38's cpsc304 database project. </p>
+                    <p>The project is based roughly on an internship recruitment company that pairs students with industry companies for co-op positions.</p>
+                    
                 </div>
             </div>
         </div>
@@ -140,4 +115,5 @@
 
 
 </body>
+
 </html>
