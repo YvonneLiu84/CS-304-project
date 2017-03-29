@@ -8,7 +8,7 @@
     <title>Admin Join</title>
 
     <link rel="stylesheet" href="assets/demo.css">
-    <link rel="stylesheet" href="assets/sidebar-collapse.css">  
+    <link rel="stylesheet" href="assets/sidebar-collapse.css">
 
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
     <link href='http://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
@@ -94,7 +94,7 @@ tr:nth-child(even){background-color: #f2f2f2}
                      * Time: 11:25 AM
                      */
                     $db = "(DESCRIPTION=(ADDRESS_LIST = (ADDRESS = (PROTOCOL = TCP)(HOST = dbhost.ugrad.cs.ubc.ca)(PORT = 1522)))(CONNECT_DATA=(SID=ug)))";
-                    if ($c=OCILogon("ora_s5p0b", "a34843145", $db)) {
+                    if ($c=OCILogon("ora_b0z8", "a31251135", $db)) {
                         echo "Successfully connected to Oracle.\n <br/>";
                     } else {
                         $err = OCIError();
@@ -159,5 +159,3 @@ tr:nth-child(even){background-color: #f2f2f2}
 </body>
 
 </html>
-
-
