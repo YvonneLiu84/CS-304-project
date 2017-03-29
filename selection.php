@@ -7,13 +7,24 @@
 
     <title>Admin Selection</title>
 
-    <link rel="stylesheet" href="assets/demo.css">
     <link rel="stylesheet" href="assets/sidebar-collapse.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.css">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
     <link href='http://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
 
+<style>
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
 
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+</style>
 </head>
 <body>
 <div>
@@ -38,11 +49,11 @@
                     <li><a href="division.php">Division</a></li>
                     <li><a href="aggregation.php">Aggregation</a></li>
                     <li><a href="nested aggregation.php">Nested Aggregation</a></li>
-                    <li><a href="delete.php">delete</a></li>
+                    <li><a href="delete.php">Delete</a></li>
                 </ul>
+                
 
             </div>
-
             <div class="link-red">
 
                 <a href="#">
@@ -55,10 +66,6 @@
                 </ul>
 
             </div>
-
-
-
-
 
         </div>
 
@@ -90,7 +97,7 @@
                     $query= "SELECT * FROM STUDENTS WHERE YEAR =". $_POST["year"];
                     $stid = oci_parse($c,$query);
                     $r = oci_execute($stid);
-                    print '<table class="table table-striped">';
+                    print '<table>';
                     while ($row = oci_fetch_array($stid, OCI_RETURN_NULLS+OCI_ASSOC)) {
                         print '<tr>';
                         foreach ($row as $item) {
