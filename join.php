@@ -82,7 +82,7 @@ tr:nth-child(even){background-color: #f2f2f2}
             <div class="row">
                 <div class="col-lg-12">
                     <form action = "<?php $_PHP_SELF ?>" method = "POST">
-                        jobtitle: <input type = "text" name = "sid" />
+                        student ID: <input type = "text" name = "sid" />
                         <input type = "submit" />
                     </form>
 
