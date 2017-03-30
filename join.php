@@ -102,7 +102,9 @@ tr:nth-child(even){background-color: #f2f2f2}
                     }
 
                     echo "Get basic information of students and their internship whose student ID is " . $_POST["sid"] . "<br/>";
-
+                    if (POST["sid"] != 0001 AND POST["sid"] != 0002 AND POST["sid"] != 0003 AND POST["sid"] != 0004 AND POST["sid"] != 0005){
+                        echo "There is no student with student ID POST["sid"]";
+                    } else{
                     $sql = "SELECT s.sid, s.name, i.jobtitle FROM students s INNER JOIN internship i ON s.sid = i.sid  WHERE s.sid =" . $_POST["sid"];
                     $stid1 = oci_parse($c, $sql);
                     $r1 = oci_execute($stid1);
@@ -117,6 +119,7 @@ tr:nth-child(even){background-color: #f2f2f2}
                     }
 
                     print '</table>';
+                    }
                     OCILogoff($c);
 
                     ?>
