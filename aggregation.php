@@ -104,7 +104,7 @@ tr:nth-child(even){background-color: #f2f2f2}
                         echo "Oracle Connect Error " . $err['message'];
                     }
 
-                    echo "Get the " . $_POST["max/min/average/"] . "salary among all the internships ". "or " . $_POST["count"] . " the number 
+                    echo "Get the " . $_POST["max/min/average/"] . "salary among all the internships ". "or the number 
 of internships <br/>";
 
                     if(empty($_POST["max/min/average"] OR $_POST["count"])) {
