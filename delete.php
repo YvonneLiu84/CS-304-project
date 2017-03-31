@@ -106,7 +106,9 @@ tr:nth-child(even){background-color: #f2f2f2}
 
                     //echo "Delete the students (student ID" . $_POST['sid'].  ") whose major is" . $_POST['major']. "<br />";
                     echo "Delete the students whose student ID is " . $_POST['sid'].  "<br />";
-
+                    if ($_POST["sid"] != 0001 AND $_POST["sid"] != 0002 AND $_POST["sid"] != 0003 AND $_POST["sid"] != 0004 AND $_POST["sid"] != 0005){
+                    echo "There is no student with student ID " . $_POST["sid"];
+                    } else{
                     $sql1 = "DELETE FROM students WHERE sid = " . $_POST['sid'];
                     $stid1 = oci_parse($c, $sql1);
                     $r1 = oci_execute($stid1);
@@ -139,6 +141,7 @@ tr:nth-child(even){background-color: #f2f2f2}
 
 
                     print '</table>';
+                    }
                     OCILogoff($c);
 
                     ?>

@@ -104,12 +104,15 @@ tr:nth-child(even){background-color: #f2f2f2}
                         echo "Oracle Connect Error " . $err['message'];
                     }
 
-                    echo "Get the " . $_POST["max/min/average/"] . "salary among all the internships ". "or " . $_POST["count"] . " the number 
+                    echo "Get the " . $_POST["max/min/average/"] . "salary among all the internships ". "or the number 
 of internships <br/>";
 
                     if(empty($_POST["max/min/average"] OR $_POST["count"])) {
                         echo "";
-                    } elseif ($_POST["max/min/average"]=="MAX"){
+                    } elseif ($_POST["max/min/average"]!="MAX" AND $_POST["max/min/average"]!="MIN" AND $_POST["max/min/average"]!="AVERAGE" AND ($_POST["count"]) != "YES") {
+                        echo "Please input a valid value, such as MAX, MIN, AVERAGE and YES for count";
+
+                     }elseif ($_POST["max/min/average"]=="MAX"){
                         $sql1 = "select max(salary) as maxSalary
                  from industryjobsalary";
                         $stid1 = oci_parse($c, $sql1);
@@ -150,7 +153,7 @@ of internships <br/>";
                             print '</tr>';
                         }
                         print '</table>';
-                    } elseif (($_POST["count"])== "COUNT"){
+                    } elseif (($_POST["count"])== "YES"){
                         $sql4 = "SELECT COUNT(*) FROM internship";
                         $stid4 = oci_parse($c, $sql4);
                         $r4 = oci_execute($stid4);
