@@ -51,7 +51,7 @@ tr:nth-child(even){background-color: #f2f2f2}
                     <li><a href="division.php">Division</a></li>
                     <li><a href="aggregation.php">Aggregation</a></li>
                     <li><a href="nested aggregation.php">Nested Aggregation</a></li>
-                    <li><a href="delete.php">delete</a></li>
+                    <li><a href="delete.php">Delete</a></li>
                 </ul>
 
             </div>
@@ -92,7 +92,7 @@ tr:nth-child(even){background-color: #f2f2f2}
 
                     <?php
                     $db = "(DESCRIPTION=(ADDRESS_LIST = (ADDRESS = (PROTOCOL = TCP)(HOST = dbhost.ugrad.cs.ubc.ca)(PORT = 1522)))(CONNECT_DATA=(SID=ug)))";
-                    if ($c=OCILogon("ora_j2z9a", "a39864146", $db)) {
+                    if ($c=OCILogon("ora_b0z8", "a31251135", $db)) {
                         echo "Successfully connected to Oracle.\n <br/>";
                     } else {
                         $err = OCIError();

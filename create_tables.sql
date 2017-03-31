@@ -206,6 +206,17 @@ insert into student_assign
 insert into student_assign
 	values('0005', '1000');
 
+insert into student_assign
+	values('0001', '2000');
+insert into student_assign
+	values('0002', '2000');
+insert into student_assign
+	values('0003', '2000');
+insert into student_assign
+	values('0004', '2000');
+insert into student_assign
+	values('0005', '2000');
+
 insert into industry_company
 	values('Hooli', '1234 West Mall', '123-786-4531', 'Alex');
 insert into industry_company

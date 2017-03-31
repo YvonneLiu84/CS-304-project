@@ -50,7 +50,7 @@ tr:nth-child(even){background-color: #f2f2f2}
                     <li><a href="division.php">Division</a></li>
                     <li><a href="aggregation.php">Aggregation</a></li>
                     <li><a href="nested aggregation.php">Nested Aggregation</a></li>
-                    <li><a href="delete.php">delete</a></li>
+                    <li><a href="delete.php">Delete</a></li>
                 </ul>
 
             </div>
